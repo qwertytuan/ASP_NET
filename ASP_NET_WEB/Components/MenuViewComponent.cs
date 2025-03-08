@@ -16,7 +16,9 @@ namespace ASP_NET_WEB.Components
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var listOfMenu = (from m in _context.TblMenus where (m.Position == 1) select m)
+            var listOfMenu = (from m in _context.TblMenus
+                    where m.Position == 1
+                    select m)
                 .ToList();
             return await Task.FromResult((IViewComponentResult) View("Default", listOfMenu));
         }
