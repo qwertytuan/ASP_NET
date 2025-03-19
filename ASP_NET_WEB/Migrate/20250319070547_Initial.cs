@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace ASP_NET_WEB.Migrations
+namespace ASP_NET_WEB.Migrate
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -40,6 +41,37 @@ namespace ASP_NET_WEB.Migrations
                     table.PrimaryKey("PK_tblMenu", x => x.MenuID);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "viewPostMenu",
+                columns: table => new
+                {
+                    PostID = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Title = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Abstract = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Contents = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Images = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Link = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Author = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    CreatedDate = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    IsActive = table.Column<bool>(type: "tinyint(1)", nullable: true),
+                    PostOrder = table.Column<int>(type: "int", nullable: false),
+                    MenuID = table.Column<int>(type: "int", nullable: false),
+                    MenuName = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_viewPostMenu", x => x.PostID);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
         }
 
         /// <inheritdoc />
@@ -47,6 +79,9 @@ namespace ASP_NET_WEB.Migrations
         {
             migrationBuilder.DropTable(
                 name: "tblMenu");
+
+            migrationBuilder.DropTable(
+                name: "viewPostMenu");
         }
     }
 }

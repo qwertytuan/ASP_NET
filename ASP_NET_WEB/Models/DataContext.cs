@@ -10,4 +10,5 @@ public class DataContext : DbContext
     }
 
     public DbSet<tblMenu> TblMenus { get; set; }
+    public DbSet<viewPostMenu> ViewPostMenus { get; set; }
 }
